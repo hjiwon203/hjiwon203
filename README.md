@@ -1,6 +1,6 @@
 <div align="center">
 
-# 황지원(Hwang ji-won) | Backend Developer
+# 황지원(Hwang Ji-won) | Backend Developer
 
 **실패가 번지지 않는 서버를 만듭니다.**<br/>
 비동기 메시지 파이프라인에서 실패를 격리하고, 사용자가 만든 규칙을 안전하게 실행하는 엔진을 설계·구현했습니다.
@@ -20,7 +20,7 @@
 | 분류 | 기술 |
 |---|---|
 | **Language** | ![Java](https://img.shields.io/badge/Java_21-007396?style=flat-square&logo=openjdk&logoColor=white) |
-| **Framework** | ![Spring Boot](https://img.shields.io/badge/Spring_Boot_3-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square&logo=spring&logoColor=white) ![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-6DB33F?style=flat-square&logo=spring&logoColor=white) ![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white) |
+| **Framework** | ![Spring Boot](https://img.shields.io/badge/Spring_Boot_3-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square&logo=spring&logoColor=white) ![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-6DB33F?style=flat-square&logo=spring&logoColor=white) |
 | **Messaging / Cache** | ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) |
 | **Database** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) |
 | **Test / Quality** | ![JUnit5](https://img.shields.io/badge/JUnit_5-25A162?style=flat-square&logo=junit5&logoColor=white) ![Mockito](https://img.shields.io/badge/Mockito-78A641?style=flat-square) ![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white) |
@@ -44,13 +44,17 @@
 
 🔗 [룰 엔진 저장소](https://github.com/nhnacademy-aiot3-4iren/4iren-rule-engine) · [위키](https://github.com/nhnacademy-aiot3-4iren/4iren-wiki/wiki/Rule%E2%80%90engine-%E2%80%90%EC%84%B8%EB%B6%80%EA%B8%B0%EB%8A%A5) · [서비스](https://4iren.site)
 
-### 📋 [MiniDooray](https://github.com/hjiwon203/MiniDooray) · 협업 프로젝트 관리 서비스
-`2026.05 (9일)` · `4인 팀` · **Front · Gateway 서버 담당**
+### 📋 [MiniDooray](https://github.com/hjiwon203/MiniDooray) · 협업 프로젝트 관리 서비스 (MSA)
+`2026.05 (9일)` · `4인 팀 · Front / Gateway / Account API / Task API` · **Task API 담당 (2인)**
 
-- Spring Security + **Redis 세션 클러스터링**으로 로그인·세션 관리
-- Gateway를 거쳐 Account / Task API로 라우팅, 사용자 정보를 헤더로 전달
-- 서비스 간 에러 응답 표준화, `@GroupSequence`로 검증 메시지 순서 제어
+프로젝트·업무·태그·마일스톤·댓글을 다루는 **Task API** 서버를 팀원 1명과 함께 맡아, 업무(Task)·댓글·태그 도메인을 구현했습니다.
 
+- 업무 생성·수정·삭제 API와 **업무-태그 N:M 매핑**(`TaskTag`): 수정 시 현재 태그와 요청 태그를 비교해 바뀐 것만 추가·제거
+- 다른 프로젝트의 태그·마일스톤이 섞이지 않도록 **프로젝트 소속 검증**
+- 업무 목록 조회의 **N+1 문제를 fetch join으로 해결** (마일스톤·태그 함께 조회)
+- 사용자별 프로젝트 목록을 **상태별 필터 + 최신순 페이징**으로 제공
+- `ErrorCode` 기반 **공통 예외 처리**(`GlobalExceptionHandler`)로 에러 응답 형식 통일
+- 서비스·리포지토리·컨트롤러 테스트 작성 (JUnit 5, Mockito)
 
 ---
 
@@ -60,3 +64,4 @@
   <img height="160" src="https://github-readme-stats.vercel.app/api?username=hjiwon203&show_icons=true&include_all_commits=true&count_private=true&hide_border=true" />
   <img height="160" src="https://github-readme-stats.vercel.app/api/top-langs/?username=hjiwon203&layout=compact&hide_border=true" />
 </div>
+
