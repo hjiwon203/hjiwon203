@@ -21,7 +21,7 @@
 |---|---|
 | **Language** | ![Java](https://img.shields.io/badge/Java_21-007396?style=flat-square&logo=openjdk&logoColor=white) |
 | **Framework** | ![Spring Boot](https://img.shields.io/badge/Spring_Boot_3-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square&logo=spring&logoColor=white) ![Spring Cloud](https://img.shields.io/badge/Spring_Cloud-6DB33F?style=flat-square&logo=spring&logoColor=white) |
-| **Messaging / Cache** | ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) |
+| **Messaging / Cache** | ![RabbitMQ](https://img.shields.io/badge/RabbitMQ-FF6600?style=flat-square&logo=rabbitmq&logoColor=white) ![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white) ![Firebase Cloud Messaging](https://img.shields.io/badge/Firebase_FCM-FFCA28?style=flat-square&logo=firebase&logoColor=black) |
 | **Database** | ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL_+_pgvector-4169E1?style=flat-square&logo=postgresql&logoColor=white) |
 | **Test / Quality** | ![JUnit5](https://img.shields.io/badge/JUnit_5-25A162?style=flat-square&logo=junit5&logoColor=white) ![Mockito](https://img.shields.io/badge/Mockito-78A641?style=flat-square) ![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat-square&logo=sonarqube&logoColor=white) |
 | **Infra / Tools** | ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black) |
@@ -36,6 +36,7 @@
 폰에서 바로 글자로 바꾼 대화를 받아, Jetson 3대에서 돌리는 로컬 AI가 웃긴 이야기를 찾아 카드로 모으고
 4컷만화·쇼츠 영상으로 만들어 주는 서비스입니다. 무거운 AI 작업을 큐로 넘기고 결과를 받아 정리하는 **백엔드 전체**를 맡았습니다.
 
+- 맡은 기능: 녹음 글 받기 → 이야기 카드(에피소드), 4컷만화·쇼츠, 직접 쓴 글·**블로그 RSS·Atom**(플랫폼별 구현)으로 카드 만들기, 프로필 캐릭터·내 목소리, **친구·방**(초대·좋아요·댓글), **알림함·공지·FCM 푸시**, **관리자**(공지·신고·정지·탈퇴)까지 api·auth에서 구현
 - 감지·만화·쇼츠처럼 오래 걸리는 일은 202로 바로 답하고 **Redis Streams 큐 3개**(컨슈머 그룹)로 Jetson 워커에 넘김, 결과는 SSH 터널 너머 `/internal` API로 받음
 - **작업 상태는 DB가 기준**: 큐에 넣기 전에 `jobs` 표에 먼저 적고 1분마다 못 들어간 작업을 다시 넣음, 같은 결과가 두 번 와도 `jobId`로 거름
 - 쇼츠는 **Jetson 3호(목소리) → 2호(그림·립싱크) 두 단계**를 백엔드가 이어 줌
